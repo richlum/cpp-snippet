@@ -23,7 +23,7 @@ int main(){
   int n= 7;
   auto f1 = std::bind(f,_2,_1,42,std::cref(n),n);
   n=10;
-  f1(1,2,1001);
+  f1(1,2,1001); // 2 1 42 10 
   auto f2 = std::bind(f,_3,std::bind(g,_3),_3,4,5);
   f2(10,11,12);
   std::default_random_engine generator;

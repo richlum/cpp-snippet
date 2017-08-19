@@ -16,7 +16,7 @@ void fillRandom(int v[],int size, int max = 123){
 template<typename T>
 void show(T v[],int size){
   std::for_each(&v[0],&v[size],[](auto x){ std::cout << x << " ";});
-  std::cout << std::endl;
+  // std::cout << std::endl;
 }
 
 template<typename T>
@@ -28,11 +28,14 @@ void swap(T& left, T& right){
 template<typename T>
 void permute(int cur, T *A, int sz){
   if (cur+1==sz){
+    std::cout << cur << ",  result = ";
     show(A,sz);
+    std::cout << std::endl;
     return;
   }
   for (int i=cur;i<sz;i++){
-    swap(A[0],A[i]);
+    swap(A[cur],A[i]);
+    std::cout << "i=" << i << ",cur=" << cur << ", A=" ; show(A,sz); std::cout << std::endl;
     permute(cur+1,A,sz);
   }
 }
@@ -46,8 +49,8 @@ int main(int argc, char **argv){
   int qty = std::stoi(argv[1]);
   int numlist[qty];
   fillRandom(numlist,qty);
-  //show(numlist,qty);
-
+  show(numlist,qty);
+  std::cout << "----" << qty << " start" << std::endl;
   permute(0,numlist, qty);
 
   char charlist[qty];
